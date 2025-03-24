@@ -14,7 +14,7 @@ What it can do:
 
 <br><br><br>
 
-# World Builder – Quick Start Guide
+# Quick Start Guide
  Build 2D worlds effortlessly with this grid-based drag-and-drop system for Unity.
  
  <br>
