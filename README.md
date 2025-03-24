@@ -1,7 +1,7 @@
 # World Builder – Unity 2D Component Package
 ### A streamlined grid-based drag-and-drop system for building rich 2D environments in Unity.
 
-<br><br>
+<br>
 
 What it can do:
 - Effortlessly create and design tile-based worlds with an intuitive snapping and placement system.
@@ -11,7 +11,6 @@ What it can do:
 
 ### Whether you're building a top-down RPG, platformer, or puzzle game, World Builder gives you the tools to bring your 2D environments to life—quickly, cleanly, and creatively.
 
-<br><br>
-<br><br>
+<br><br><br>
 
 # Guide:
