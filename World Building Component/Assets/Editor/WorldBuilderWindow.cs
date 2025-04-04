@@ -42,7 +42,7 @@ public class WorldBuilderWindow : EditorWindow
         }
         else
         {
-            scrollPos = EditorGUILayout.BeginScrollView(scrollPos, GUILayout.Height(100));
+            scrollPos = EditorGUILayout.BeginScrollView(scrollPos, GUILayout.Height(400));
             for (int i = 0; i < activeBuilder.tilePrefabs.Length; i++)
             {
                 var prefab = activeBuilder.tilePrefabs[i];
