@@ -180,8 +180,8 @@ MonoBehaviour:
   - {fileID: 2196088308889092970, guid: 24f7739bf52a8284aaadbcf96e3154ef, type: 3}
   - {fileID: 1091442720371382073, guid: 86a2e758e556a5f44bfdfa086352269f, type: 3}
   - {fileID: 4514726172071453140, guid: a0e50bf42cdcbc24c8af085185cdb580, type: 3}
-  selectedTileIndex: 9
-  brushRadius: 0
+  selectedTileIndex: 0
+  brushRadius: 1
   tilesParent: {fileID: 1426227564}
 --- !u!1 &519420028
 GameObject:

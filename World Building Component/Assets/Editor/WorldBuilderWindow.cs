@@ -87,19 +87,46 @@ public class WorldBuilderWindow : EditorWindow
 
     private void ClearAllTiles()
     {
-        if (activeBuilder == null) return;
+        if (activeBuilder == null)
+        {
+            Debug.LogWarning("No active builder set in the window!");
+            return;
+        }
 
+        Debug.Log($"Clearing {activeBuilder.placedTiles.Count} tiles...");
+
+        // Destroy all tile objects tracked in the dictionary
         foreach (var kvp in activeBuilder.placedTiles)
         {
-            if (kvp.Value != null)
+            GameObject tile = kvp.Value;
+            if (tile != null)
             {
 #if UNITY_EDITOR
-                Undo.DestroyObjectImmediate(kvp.Value);
+                Undo.DestroyObjectImmediate(tile);
 #else
-                DestroyImmediate(kvp.Value);
+            DestroyImmediate(tile);
 #endif
             }
         }
         activeBuilder.placedTiles.Clear();
+
+        //  Additionally, destroy all children under the tilesParent
+        if (activeBuilder.tilesParent != null)
+        {
+            // Loop backwards to safely remove children
+            for (int i = activeBuilder.tilesParent.childCount - 1; i >= 0; i--)
+            {
+                Transform child = activeBuilder.tilesParent.GetChild(i);
+#if UNITY_EDITOR
+                Undo.DestroyObjectImmediate(child.gameObject);
+#else
+            DestroyImmediate(child.gameObject);
+#endif
+            }
+        }
+
+        Debug.Log("All tiles cleared.");
+        SceneView.RepaintAll();
     }
+
 }
