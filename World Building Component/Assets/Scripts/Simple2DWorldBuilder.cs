@@ -1,10 +1,9 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using UnityEditor;
 #endif
 
 using UnityEngine;
 using System.Collections.Generic;  // For Dictionary
-
 
 [ExecuteInEditMode]
 public class Simple2DWorldBuilder : MonoBehaviour
@@ -21,19 +20,38 @@ public class Simple2DWorldBuilder : MonoBehaviour
     [Range(0, 5)]
     public int brushRadius = 0;
     // 0 = 1 cell (just the clicked cell)
-    // 1 = 3×3 area (+1 cell in all directions)
+    // 1 = 3Ã—3 area (+1 cell in all directions)
 
-
-    // A dictionary that keeps track of placed tiles: (row, col) = tile GameObject
+    // A dictionary that keeps track of placed tiles: (col, row) = tile GameObject
     public Dictionary<Vector2Int, GameObject> placedTiles = new Dictionary<Vector2Int, GameObject>();
 
     // Assign a parent object for all spawned tiles to keep your hierarchy clean
     public Transform tilesParent;
 
+    //REBUILDS THE DICTIONARY WHEN THE SCENE LOADS ----------------------------------------
+    private void OnEnable()
+    {
+        // Rebuild the dictionary from existing tile objects.
+        // This assumes that all placed tiles are children of tilesParent.
+        placedTiles.Clear();
+        if (tilesParent != null)
+        {
+            Tile2D[] tiles = tilesParent.GetComponentsInChildren<Tile2D>();
+            foreach (Tile2D tile in tiles)
+            {
+                if (tile != null)
+                {
+                    // Use tile.cellCoord as the key
+                    placedTiles[tile.cellCoord] = tile.gameObject;
+                }
+            }
+        }
+    }
+
+    //DRAWS THE GRID ----------------------------------------------------------------------------------------
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-
         float totalWidth = gridWidth * cellSize;
         float totalHeight = gridHeight * cellSize;
 
@@ -56,8 +74,7 @@ public class Simple2DWorldBuilder : MonoBehaviour
         }
     }
 
-   
-    /// Places a tile at a specific grid cell (row, col)
+    //PLACES A TILE ----------------------------------------------------------------------------------------------
     public void PlaceTile(int row, int col)
     {
         // Validate coordinates
@@ -76,11 +93,9 @@ public class Simple2DWorldBuilder : MonoBehaviour
                 // Use Undo for Editor support (undo/redo)
                 Undo.DestroyObjectImmediate(oldTile);
 #else
-            
-            DestroyImmediate(oldTile);
+                DestroyImmediate(oldTile);
 #endif
             }
-            // Remove from dictionary
             placedTiles.Remove(cellKey);
         }
 
@@ -91,14 +106,13 @@ public class Simple2DWorldBuilder : MonoBehaviour
             return;
         }
 
-        // Calc tile position (center of the cell)
+        // Calculate the world position for the center of this cell
         float xPos = transform.position.x + (col + 0.5f) * cellSize;
         float yPos = transform.position.y + (row + 0.5f) * cellSize;
         Vector3 tilePosition = new Vector3(xPos, yPos, 0);
 
         // Instantiate the tile
         GameObject newTile = null;
-
 #if UNITY_EDITOR
         if (!Application.isPlaying)
         {
@@ -108,20 +122,19 @@ public class Simple2DWorldBuilder : MonoBehaviour
         }
         else
         {
-            // Runtime instantiation
             newTile = Instantiate(tilePrefabs[selectedTileIndex], tilePosition, Quaternion.identity);
         }
 #else
-    newTile = Instantiate(tilePrefabs[selectedTileIndex], tilePosition, Quaternion.identity);
+        newTile = Instantiate(tilePrefabs[selectedTileIndex], tilePosition, Quaternion.identity);
 #endif
 
-        // Parent
+        // Parent the tile under tilesParent if assigned
         if (newTile != null && tilesParent != null)
         {
             newTile.transform.SetParent(tilesParent);
         }
 
-        // Auto-fit sprite to cell size
+        // Auto-fit the sprite to cell size
         if (newTile != null)
         {
             SpriteRenderer sr = newTile.GetComponent<SpriteRenderer>();
@@ -143,30 +156,23 @@ public class Simple2DWorldBuilder : MonoBehaviour
             tileData.builder = this;
         }
 
-        // Record in dictionary
+        // Record the new tile in the dictionary
         placedTiles[cellKey] = newTile;
     }
 
-
-
-
-
+    // REMOVES TILE ------------------------------------------------------------------------------------------------
     public void RemoveTile(Vector2Int cellCoord)
     {
-        // Check if the dictionary has this cell
         if (placedTiles.ContainsKey(cellCoord))
         {
             placedTiles.Remove(cellCoord);
-            // Debug.Log($"Tile at {cellCoord} removed from dictionary");
         }
     }
 
-
 #if UNITY_EDITOR
+    // When any public variable is changed in the Inspector, recalc all placed tiles
     private void OnValidate()
     {
-        // When any public variable is changed in the Inspector, recalc all placed tiles
-        // Make sure we don’t do this in Play mode or you might get unwanted changes.
         if (!Application.isPlaying)
         {
             RecalculateAllTiles();
@@ -174,43 +180,33 @@ public class Simple2DWorldBuilder : MonoBehaviour
     }
 #endif
 
-    /// <summary>
-    /// Recalculate the position and scale of every tile
-    /// so they match the current cellSize.
-    /// </summary>
+    //RECALCULATES ALL TILES -----------------------------------------------------------------------------------
     public void RecalculateAllTiles()
     {
         foreach (var kvp in placedTiles)
         {
             GameObject tileObj = kvp.Value;
             if (tileObj == null)
-                continue; // Skip missing or destroyed tiles
+                continue;
 
-            // Retrieve the Tile2D component for cell coordinate
             Tile2D tileData = tileObj.GetComponent<Tile2D>();
             if (tileData == null)
-                continue; // Skip if there's no Tile2D script
+                continue;
 
-            // 1. Position: place it at the center of its cell
             int col = tileData.cellCoord.x;
             int row = tileData.cellCoord.y;
-
             float xPos = transform.position.x + (col + 0.5f) * cellSize;
             float yPos = transform.position.y + (row + 0.5f) * cellSize;
             tileObj.transform.position = new Vector3(xPos, yPos, 0);
 
-            // 2. Scale: adjust so the sprite fits the cell size
             SpriteRenderer sr = tileObj.GetComponent<SpriteRenderer>();
             if (sr != null && sr.sprite != null)
             {
                 Vector2 spriteSize = sr.sprite.bounds.size;
-
                 float scaleX = cellSize / spriteSize.x;
                 float scaleY = cellSize / spriteSize.y;
-
                 tileObj.transform.localScale = new Vector3(scaleX, scaleY, 1f);
             }
         }
     }
-
 }
