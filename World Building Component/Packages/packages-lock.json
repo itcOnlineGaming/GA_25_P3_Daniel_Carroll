@@ -266,6 +266,12 @@
       },
       "url": "https://packages.unity.com"
     },
+    "ie.setu.worldbuilder": {
+      "version": "file:ie.setu.worldbuilder",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,

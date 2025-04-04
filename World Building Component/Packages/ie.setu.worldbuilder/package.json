@@ -1,0 +1,7 @@
+{
+    "name": "ie.setu.worldbuilder",
+    "version": "1.0.0",
+    "displayName": "WorldBuilder",
+    "description": "A tool to build 2D worlds.",
+    "unity": "2022.3"
+}
