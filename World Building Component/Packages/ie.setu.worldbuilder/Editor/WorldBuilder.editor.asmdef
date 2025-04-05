@@ -1,0 +1,16 @@
+{
+    "name": "WorldBuilder.editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:91427d304605b2c478ae6220d42dbd4f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
