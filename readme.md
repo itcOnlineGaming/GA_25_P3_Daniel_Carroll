@@ -102,12 +102,13 @@ The **Simple 2D World Builder** package is designed to help developers rapidly c
   
 - **Right-click** (or drag) on the grid to erase tiles.
   - Tiles are removed from both the scene and the internal dictionary.
+  ![Logo](imgs/11.png)
 
 ### Brush Support
 
 - When holding down the mouse button, the tool will paint or erase all cells within the current brush radius.
 - The brush radius can be adjusted via the custom editor window (see next section).
-
+![Logo](imgs/12.png)
 ---
 
 ## Using the Custom Editor Window
