@@ -125,7 +125,7 @@ The **Simple 2D World Builder** package is designed to help developers rapidly c
 3. **Tile Palette:**
    - View a scrollable tile palette showing thumbnails of your available tile prefabs.
    - Click **"Select"** on a tile to set it as the active tile for placement.
-![Logo](imgs/15.png)
+   ![Logo](imgs/15.png)
 4. **Brush Settings:**
    - Adjust the **Brush Radius** slider to change how many cells are painted/erased at once.
    ![Logo](imgs/3.png)
