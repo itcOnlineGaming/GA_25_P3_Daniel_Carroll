@@ -190,3 +190,5 @@ The **Simple 2D World Builder** package is designed to help developers rapidly c
 ## Conclusion
 
 The Simple 2D World Builder package provides a robust and flexible system for creating and editing 2D game worlds in Unity. By following this guide, developers can quickly integrate the package into their projects, utilize its painting and erasing tools, and take advantage of the custom editor window for streamlined level design.
+
+  ![Logo](imgs/22.png)
