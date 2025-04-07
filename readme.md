@@ -55,7 +55,7 @@ The **Simple 2D World Builder** package is designed to help developers rapidly c
 - **Persistence and Saving:**
   - Tiles are saved as part of the scene.
   - On scene load, the package automatically rebuilds its internal dictionary so that all placed tiles become erasable and adjustable.
-
+  ![Logo](imgs/5.png)
 ---
 
 ## Installation
