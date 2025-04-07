@@ -64,10 +64,12 @@ The **Simple 2D World Builder** package is designed to help developers rapidly c
    - Download the Simple 2D World Builder package.
    - In Unity, go to **Assets > Import Package > Custom Package...** and select the downloaded package.
    - Make sure all scripts and editor folders are imported into your project.
+   ![Logo](imgs/6.png)
 
 2. **Folder Structure:**
    - **Scripts Folder:** Contains runtime scripts such as `Simple2DWorldBuilder.cs` and `Tile2D.cs`.
    - **Editor Folder:** Contains editor scripts such as `Simple2DWorldBuilderEditor.cs` and `WorldBuilderWindow.cs`.
+   ![Logo](imgs/7.png)
 
 ---
 
@@ -76,14 +78,17 @@ The **Simple 2D World Builder** package is designed to help developers rapidly c
 1. **Add the World Builder Component:**
    - In your scene, create an empty GameObject (e.g., named `WorldBuilder`).
    - Attach the `Simple2DWorldBuilder` component to the GameObject.
+   ![Logo](imgs/8.png)
 
 2. **Configure Grid Settings:**
    - Set your desired **grid width**, **grid height**, and **cell size** in the Inspector.
    - Adjust the **brush radius** (0 for single cell, 1 for a 3×3 block, etc.) as needed.
+   ![Logo](imgs/9.png)
 
 3. **Tile Placement Setup:**
    - Populate the **tilePrefabs** array with your tile prefabs.
    - (Optional) Create a dedicated GameObject (e.g., named `Tiles`) to serve as the parent for all placed tiles and assign it to the **tilesParent** field.
+   ![Logo](imgs/10.png)
 
 ---
 
