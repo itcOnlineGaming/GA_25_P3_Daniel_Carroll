@@ -115,22 +115,26 @@ The **Simple 2D World Builder** package is designed to help developers rapidly c
 
 1. **Open the World Builder Window:**
    - Navigate to **Tools > World Builder Window** in the Unity menu.
+   ![Logo](imgs/13.png)
 
 2. **Assign the Active Builder:**
    - In the window, drag your `WorldBuilder` GameObject into the "Builder Object" field.
    - This connects the window to your active world builder.
+   ![Logo](imgs/14.png)
 
 3. **Tile Palette:**
    - View a scrollable tile palette showing thumbnails of your available tile prefabs.
    - Click **"Select"** on a tile to set it as the active tile for placement.
-
+![Logo](imgs/15.png)
 4. **Brush Settings:**
    - Adjust the **Brush Radius** slider to change how many cells are painted/erased at once.
+   ![Logo](imgs/3.png)
 
 5. **Quick Actions:**
    - **Clear All Tiles:** Removes every placed tile, and also clears all children under the designated `tilesParent`.
    - **Recalculate Tiles:** Repositions and resizes all placed tiles to match any changes to the grid settings.
    - **Repaint Scene View:** Forces an update of the Scene view to reflect recent changes.
+   ![Logo](imgs/16.png)
 
 ---
 
