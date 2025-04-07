@@ -29,21 +29,28 @@ The **Simple 2D World Builder** package is designed to help developers rapidly c
 - **Grid System:** 
   - Configurable grid dimensions (grid width and height) and cell size.
   - Visual grid overlay in the Scene view using Gizmos.
+  ![Logo](imgs/1.png)
+
 
 - **Tile Placement:**
   - Place tiles by clicking on the grid.
   - Auto-adjust tile sprite scale to fill the grid cell.
   - Right-click erase functionality.
   - Option to replace existing tiles by placing a new tile on an occupied cell.
+  ![Logo](imgs/2.png)
+
 
 - **Brush Tools:**
   - Adjustable brush radius to "paint" larger areas with a single drag.
   - Supports both painting and erasing multiple tiles at once.
+  ![Logo](imgs/3.png)
+
 
 - **Editor Enhancements:**
   - Custom Editor Window with a tile palette preview, quick action buttons (clear all, recalc, repaint).
   - Brush settings (slider to control brush radius).
   - Built-in support for Undo/Redo using UnityEditor utilities.
+  ![Logo](imgs/4.png)
 
 - **Persistence and Saving:**
   - Tiles are saved as part of the scene.
