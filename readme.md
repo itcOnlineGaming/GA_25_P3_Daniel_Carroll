@@ -151,6 +151,8 @@ The **Simple 2D World Builder** package is designed to help developers rapidly c
 - **Usage Note:**
   - If you experience issues with tiles not being erasable upon scene reload, use the **Clear All Tiles** button in the World Builder Window to refresh the state. The rebuilt dictionary ensures future modifications work as expected.
 
+  ![Logo](imgs/17.png)
+
 ---
 
 ## Best Practices & Tips
@@ -167,6 +169,9 @@ The **Simple 2D World Builder** package is designed to help developers rapidly c
 - **Testing:**
   - Regularly test changes in both Edit Mode and Play Mode to ensure consistency in tile behavior.
 
+  ![Logo](imgs/18.1.png)
+  ![Logo](imgs/19.png)
+
 ---
 
 ## Known Issues & Troubleshooting
@@ -178,6 +183,8 @@ The **Simple 2D World Builder** package is designed to help developers rapidly c
 - **Editor-Only API:**
   - The package uses Editor-only classes (e.g., `PrefabUtility`, `Undo`). Ensure your code is properly wrapped with `#if UNITY_EDITOR` to avoid build issues.
 
+  ![Logo](imgs/20.png)
+  ![Logo](imgs/21.png)
 ---
 
 ## Conclusion
