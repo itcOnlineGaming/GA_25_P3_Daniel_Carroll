@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEditor;
 
+#if UNITY_EDITOR
+
 public class WorldBuilderWindow : EditorWindow
 {
     private Simple2DWorldBuilder activeBuilder;
@@ -130,3 +132,4 @@ public class WorldBuilderWindow : EditorWindow
     }
 
 }
+#endif

@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 
+#if UNITY_EDITOR
+
 [CustomEditor(typeof(Simple2DWorldBuilder))]
 public class Simple2DWorldBuilderEditor : Editor
 {
@@ -140,3 +142,4 @@ public class Simple2DWorldBuilderEditor : Editor
         }
     }
 }
+#endif
